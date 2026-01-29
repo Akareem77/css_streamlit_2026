@@ -36,51 +36,38 @@ chemical_data = pd.DataFrame({
 if menu == "Researcher Profile":
     st.title("Researcher Profile")
     st.sidebar.header("Profile Options")
+    
 
     # Collect basic information
     name = "Dr. Afeez Kareem"
     field = "Chemistry"
     institution = "University of Western Cape"
-
+    
+    
     # Display basic profile information
     st.write(f"**Name:** {name}")
     st.write(f"**Field of Research:** {field}")
     st.write(f"**Institution:** {institution}")
+    st.subheader("Professional experience")
+    st.write("Postdoctoral Researcher at the University of the Western Cape specializing in drug design and chemical synthesis, with research interests spanning pharmaceutical sciences, teaching, and the development of novel therapeutic strategies for tuberculosis and Alzheimer’s disease.")
+    st.subheader("Research Skills")
+    st.write("•	Proficient in the design, synthesis and characterization of small molecules for therapeutic applications in diseases treatment.")
+    st.write("•	Proficient in virtual screening methods for identifying potential small molecule inhibitors from compound libraries.")
+    st.write("•	Proficient in culturing Mycobacterium smegmatis, including knowledge of appropriate growth media, incubation conditions, and aseptic techniques")
+    st.write("•	Conducted and optimized GSK3B enzyme assays to evaluate compound activity, utilizing kinase activity assays to assess ATP consumption and substrate phosphorylation.")
     
-    st.image(
-        "https://images.unsplash.com/photo-1602052577122-f73b9710adba?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        caption="Nature (Pixabay)"
-    )
 
 elif menu == "Publications":
     st.title("Publications")
     st.sidebar.header("Upload and Filter")
-
-    # Upload publications file
-    uploaded_file = st.file_uploader("Upload a CSV of Publications", type="csv")
-    if uploaded_file:
-        publications = pd.read_csv(uploaded_file)
-        st.dataframe(publications)
-
-        # Add filtering for year or keyword
-        keyword = st.text_input("Filter by keyword", "")
-        if keyword:
-            filtered = publications[
-                publications.apply(lambda row: keyword.lower() in row.astype(str).str.lower().values, axis=1)
-            ]
-            st.write(f"Filtered Results for '{keyword}':")
-            st.dataframe(filtered)
-        else:
-            st.write("Showing all publications")
-
-        # Publication trends
-        if "Year" in publications.columns:
-            st.subheader("Publication Trends")
-            year_counts = publications["Year"].value_counts().sort_index()
-            st.bar_chart(year_counts)
-        else:
-            st.write("The CSV does not have a 'Year' column to visualize trends.")
-
+    #Publications
+    st.write("•	Afeez I. Kareem, Erika Kapp, Jacques Joubert1Xiaoqin Zou, (2025) Dual GSK3β/SIRT1 modulators for Alzheimer’s: mechanisms, drug discovery and future perspectives. Frontiers in Pharmacology. doi.org/10.3389/fphar.2025.1662241")
+    st.write("•	Kareem, A.I., Malan, S.F., Erika K., Sean S., Joubert J. (2024). Synthesis, Characterization, and Biological Evaluation of Coumarin-Nitric Oxide Donor Hybrids as Anti-Tubercular Agents. Eur. J. Med. Chem. Report. DOI: 10.1016/j.ejmcr.2024.100211")
+    st.write("• Akinleye, M. O., Okonkwo, N., Amaeze, O. U., Shonekan, O. O., Kareem, A. I., Eze, E., & Ukpo, G. E. (2023). Ruzu herbal bitters altered the pharmacokinetic profile of metformin tablets in healthy Nigerian volunteers following concurrent administration. West African Journal of Pharmacy, 34(2), Article 2. doi.org/10.60787/wapcp-34-2-291")
+    st.write("• Kareem, A.I., Malan, S.F., Joubert, J. (2022). Radical Releasing Anti-Tuberculosis Agents and the Treatment of Mycobacterial Tuberculosis Infections - An Overview. Mini Rev. in Med. Chem. DOI: 10.2174/1389557521666210219161045")
+    
+       
+    
 elif menu == "STEM Data Explorer":
     st.title("Chemical Database")
     st.sidebar.header("Data Selection")
@@ -127,5 +114,5 @@ elif menu == "STEM Data Explorer":
 elif menu == "Contact":
     # Add a contact section
     st.header("Contact Information")
-    email = "afeez.ak@outlook.com"
+    email = "afeez.akcsv@outlook.com"
     st.write(f"You can reach me at {email}.")
